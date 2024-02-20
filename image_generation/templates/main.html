@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+
+<div class="container">
+
+    <div class="col-lg-4 col-md-12 first">
+
+        <div class='main'>
+            <h1>ZabAI<h1>
+                    <h2 class='head'>Image Generator</h2>
+                    <p>Transform your words into captivating visuals</p>
+        </div>
+    </div>
+
+
+
+    <div class='col-lg-8 col-md-12 second '>
+
+
+        <div class="col-md-6 chat-container">
+            <form method="POST" autocomplete='off'>
+                {% csrf_token %}
+                <div class="form-group">
+
+                    <input type='text' class='form-control' placeholder='Describe what you want to see'
+                        name='user_input' required>
+                    <button type='submit' class='button'>Generate</button>
+                </div>
+                <div class='row'>
+                    <h6 class='recent'>Recent history</h6>
+                    {% if recent_images %}
+                    {% for image in recent_images %}
+                    <div class='cards col-md-6'>
+                        <img src="{{ image.image.url }}" class='img-history img-fluid' alt="Generated Image"
+                            style="max-height: 100%;">
+                    </div>
+                    {% if forloop.counter|divisibleby:2 and not forloop.last %}
+                    {% endif %}
+                    {% endfor %}
+                    {% else %}
+                    <p class='empty'>Recent history is not found</p>
+                    {% endif %}
+                </div>
+
+            </form>
+        </div>
+        <div class="col-md-6 history">
+
+            <div class="mt-4 history-image">
+                {% if ai_image %}
+                <img src="{{ ai_image.image.url }}" class='img-history' alt="Generated Image">
+                {% else %}
+                <p class="mt-4 no-image">No image generated yet.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock content %}
