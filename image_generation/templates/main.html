@@ -5,7 +5,6 @@
 {% block content %}
 
 <div class="container">
-
     <div class="col-lg-4 col-md-12 first">
 
         <div class='main'>
@@ -15,11 +14,7 @@
         </div>
     </div>
 
-
-
     <div class='col-lg-8 col-md-12 second '>
-
-
         <div class="col-md-6 chat-container">
             <form method="POST" autocomplete='off'>
                 {% csrf_token %}
@@ -30,6 +25,7 @@
                     <button type='submit' class='button'>Generate</button>
                 </div>
                 <div class='row'>
+
                     <h6 class='recent'>Recent history</h6>
                     {% if recent_images %}
                     {% for image in recent_images %}
@@ -41,7 +37,7 @@
                     {% endif %}
                     {% endfor %}
                     {% else %}
-                    <p class='empty'>Recent history is not found</p>
+                    <p class='empty'> Recent history is not found </p>
                     {% endif %}
                 </div>
 
@@ -53,15 +49,13 @@
                 {% if ai_image %}
                 <img src="{{ ai_image.image.url }}" class='img-history' alt="Generated Image">
                 {% else %}
-                <p class="mt-4 no-image">No image generated yet.</p>
+
+                <p class="mt-4 no-image"> No image generated yet. </p>
                 {% endif %}
             </div>
         </div>
     </div>
 </div>
-
-
-
 
 
 {% endblock content %}

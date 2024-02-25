@@ -45,7 +45,6 @@ def generate_image_text(request):
     else:
            recent_images = AiImage.objects.all().order_by('-id')[:4]
     
-
     return render(request,'main.html',{'recent_images':recent_images})
 
 
