@@ -145,6 +145,7 @@ p.no-image {
 nav{
     width:80px;
     height: 80px;
+    background-color: #495057;
 
 }
 main h1{
@@ -155,6 +156,7 @@ main h1{
 }
 .recent{
     padding-top:20px ;
+    
 }
 .empty{
     display: flex;
